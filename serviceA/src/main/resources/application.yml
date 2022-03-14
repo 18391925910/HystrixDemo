@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: a
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+server:
+  port: 6001
+
+feign:
+  client:
+    config:
+      metadata:
+        connectTimeout: 3000 #3秒
+        readTimeout: 300000  #5分钟
+        loggerLevel: FULL
+  hystrix:
+    enabled: true
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: "localhost"
+#健康检查
+management:
+  endpoint:
+    health:
+      show-details: always
+    info:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    cassandra:
+      enabled: true
+    db:
+      enabled: true
+    redis:
+      enabled: true
+    ping:
+      enabled: true
+    couchbase:
+      enabled: true
